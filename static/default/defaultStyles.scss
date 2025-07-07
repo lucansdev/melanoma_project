@@ -19,6 +19,8 @@
   --medBlack: #141414;
   --medDownBlack: #1b1b1b;
   --minBlack: #1c1c1c;
+  --minDownBlack: #2a2a2a;
+  --minDownLightBlack: #3f3f3f;
 
   --maxWhite: #ffffff;
   --medWhite: #faf7fe;
@@ -89,6 +91,7 @@ body {
   align-content: center;
   font-size: 32px;
   border-top: 3px solid var(--medDownBlack);
+  box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.3);
 
   a {
     color: var(--minWhite);
