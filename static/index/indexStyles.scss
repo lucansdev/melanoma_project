@@ -1,0 +1,97 @@
+.main-text {
+  margin-bottom: 20px;
+
+  h1 {
+    font-family: "Pridi", sans-serif;
+    text-align: center;
+    font-size: 64px;
+    color: var(--maxWhite);
+    font-weight: 6 00;
+    background: var(--medBlack);
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(to left, var(--medBlue) 30%, var(--medPink));
+      left: 0;
+      bottom: 0;
+      filter: blur(2px);
+    }
+  }
+
+  p {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 25px;
+  }
+}
+
+.aviso {
+  padding: 20px 60px;
+
+  .aviso-inner {
+    background: var(--minRed);
+    padding: 20px;
+    border-radius: 5px;
+    border: 3px solid var(--maxRed);
+
+    h2 {
+      font-size: 30px;
+      text-align: center;
+      padding-bottom: 10px;
+      font-family: "Raleway", sans-serif;
+    }
+
+    h3 {
+      font-weight: 200;
+      font-size: 20px;
+      text-indent: 20px;
+
+      .em {
+        font-weight: 400;
+        color: var(--minYellow);
+      }
+
+      a {
+        color: var(--medWhite);
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.detect-direct {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 40px;
+  transition: all ease-in-out 0.15s;
+  width: max-content;
+
+  a {
+    background: linear-gradient(to right, var(--medBlue), var(--medPink));
+    font-size: 24px;
+    color: var(--maxWhite);
+    text-decoration: none;
+    font-family: "Raleway", sans-serif;
+    padding: 20px;
+    border-radius: 50px;
+    font-weight: 400;
+    box-shadow: 0 0 15px 10px black;
+    filter: brightness(80%);
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      filter: brightness(100%);
+      font-weight: 500;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
