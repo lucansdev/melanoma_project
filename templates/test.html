@@ -1,0 +1,39 @@
+{% extends "default.html" %} {% block content %}
+
+<link rel="stylesheet" href="../static/test/testStyles.css" />
+
+<div class="instructions">
+  <h2>Como enviar a foto</h2>
+  <p>Siga as instruções para enviar uma foto que aumente a precisão do teste</p>
+  <div class="instructions-list">
+    <div class="instruction">
+      <i class="fa-solid fa-camera"></i>
+      <h3>
+        Fotografe apenas a região da pele onde você suspeita que possa haver
+        melanoma. Evite incluir outras partes do corpo, objetos ou fundo na
+        imagem.
+      </h3>
+    </div>
+    <div class="instruction">
+      <i class="fa-solid fa-lightbulb"></i>
+      <h3>
+        Tire a foto em um ambiente claro, para que a região esteja visível.
+      </h3>
+    </div>
+    <div class="instruction">
+      <i class="fa-solid fa-expand"></i>
+      <h3>A foto deve estar com o foco na região suspeita de melanoma.</h3>
+    </div>
+  </div>
+</div>
+
+<div class="enviar">
+  <div class="enviar-button">
+    <i class="fa-solid fa-image">
+      <p>Adicionar ou tirar foto</p>
+    </i>
+    <input type="file" name="enviar" />
+  </div>
+</div>
+
+{% endblock %}
