@@ -86,10 +86,10 @@ melanoma_model.get_model(model_path)
 def render_welcome():
     return render_template("index.html")
 
-@app.route("/predict", methods=["GET", "POST"])
+@app.route("/teste", methods=["GET", "POST"])
 def predict_cancer():
     if request.method == "GET":
-        return render_template("predict.html")
+        return render_template("test.html")
     
 
     if request.method == "POST":
@@ -114,6 +114,14 @@ def predict_cancer():
             return jsonify({"response": prediction,"acc":acc})
         except Exception as e:
             return jsonify({"error": str(e)}), 500
+
+@app.route("/clinicas")
+def clinicas():
+    return render_template("clinicas.html")
+
+@app.route("/resultado")
+def resultado():
+    return render_template("resultado.html")
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False,host="0.0.0.0")
