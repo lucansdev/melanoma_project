@@ -1,0 +1,52 @@
+:root {
+  --maxPink: #c831b4;
+  --medPink: #9f199f;
+  --minPink: #740e61;
+  --maxBlue: #3d1ad1;
+  --medBlue: #3c139f;
+  --minBlue: #420e84;
+  --maxBlack: #0c0c0c;
+  --medBlack: #141414;
+  --minBlack: #1c1c1c;
+  --maxWhite: #ffffff;
+  --medWhite: #f7fcfe;
+  --minWhite: #e0e0e0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background: var(--medBlack);
+  color: var(--minWhite);
+}
+
+.header {
+  width: 100%;
+  background: var(--maxBlack);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--minWhite);
+  position: relative;
+}
+.header h1 {
+  transform: scaleX(1.15);
+  transform-origin: center;
+  font-size: 36px;
+  font-weight: 900;
+  font-style: italic;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--maxBlue) 30%, var(--maxPink));
+  bottom: 0;
+  left: 0;
+}/*# sourceMappingURL=defaultStyles.css.map */
