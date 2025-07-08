@@ -33,8 +33,11 @@ async function handleSubmit() {
     });
 
     if (response.ok) {
+      responseObject = JSON.parse(response);
+      localStorage.setItem("result", responseObject.response);
+      localStorage.setItem("accuracy", responseObject.acc);
+
       window.location.pathname = "/resultado";
-      // Arrumar um jeito de pegar os dados da response no /resultado
     }
   } catch (e) {
     submitButton.disabled = false;
