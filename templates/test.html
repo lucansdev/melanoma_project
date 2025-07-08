@@ -30,10 +30,19 @@
 <div class="enviar">
   <div class="enviar-button">
     <i class="fa-solid fa-image">
-      <p>Adicionar ou tirar foto</p>
+      <p>Selecionar ou tirar foto</p>
     </i>
-    <input type="file" name="enviar" />
+    <input
+      type="file"
+      accept="image/jpeg, image/png"
+      name="enviar"
+      id="input-enviar"
+    />
   </div>
 </div>
+
+<button class="submit">Enviar imagem</button>
+
+<script src="../static/js/index.js"></script>
 
 {% endblock %}
