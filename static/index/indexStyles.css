@@ -2,46 +2,42 @@
   margin-bottom: 20px;
 }
 .main-text h1 {
-  font-family: "Pridi", sans-serif;
+  font-family: "Raleway", sans-serif;
   text-align: center;
   font-size: 64px;
-  color: var(--maxWhite);
+  color: var(--maxBlack);
   font-weight: 6 0;
-  background: var(--medBlack);
   position: relative;
   padding-bottom: 10px;
-}
-.main-text h1::after {
-  content: "";
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(to left, var(--medBlue) 30%, var(--medPink));
-  left: 0;
-  bottom: 0;
-  filter: blur(2px);
+  font-weight: 600;
 }
 .main-text p {
   font-size: 24px;
   text-align: center;
   font-weight: 400;
-  margin-top: 25px;
+  margin-top: 15px;
+  color: var(--darkWhite);
 }
 
 .aviso {
+  display: flex;
   padding: 20px 60px;
+  max-width: 700px;
+  text-align: center;
+  margin: 0 auto;
 }
 .aviso .aviso-inner {
-  background: var(--minRed);
+  background: var(--medUpWhite);
   padding: 20px;
   border-radius: 5px;
-  border: 3px solid var(--maxRed);
+  border: 3px solid var(--medDownDarkWhite);
 }
 .aviso .aviso-inner h2 {
   font-size: 30px;
   text-align: center;
   padding-bottom: 10px;
   font-family: "Raleway", sans-serif;
+  color: var(--medBlue);
 }
 .aviso .aviso-inner h3 {
   font-weight: 200;
@@ -50,10 +46,10 @@
 }
 .aviso .aviso-inner h3 .em {
   font-weight: 400;
-  color: var(--minYellow);
+  color: var(--medBlue);
 }
 .aviso .aviso-inner h3 a {
-  color: var(--medWhite);
+  color: var(--medBlack);
   font-weight: 400;
 }
 
@@ -62,26 +58,22 @@
   margin: 0 auto;
   padding-top: 40px;
   transition: all ease-in-out 0.15s;
-  width: -moz-max-content;
-  width: max-content;
+  width: 100%;
 }
 .detect-direct a {
-  background: linear-gradient(to right, var(--medBlue), var(--medPink));
+  background: var(--medBlue);
   font-size: 24px;
+  width: 100%;
   color: var(--maxWhite);
   text-decoration: none;
   font-family: "Raleway", sans-serif;
   padding: 20px;
-  border-radius: 50px;
+  border-radius: 10px;
   font-weight: 400;
-  box-shadow: 0 0 15px 10px black;
-  filter: brightness(80%);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
   transition: all ease-in-out 0.2s;
 }
 .detect-direct a:hover {
-  filter: brightness(100%);
+  background: var(--maxBlue);
   font-weight: 500;
-}
-.detect-direct:hover {
-  transform: scale(1.02);
 }/*# sourceMappingURL=indexStyles.css.map */
