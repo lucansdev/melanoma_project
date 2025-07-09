@@ -1,0 +1,28 @@
+{% extends "default.html" %} {% block content %}
+
+<link rel="stylesheet" href="../static/result/resultStyles.css" />
+
+<div class="resultado">
+  <h2>Resultado</h2>
+  <h3>
+    O resultado do teste foi <span class="result">positivo</span> para Melanoma
+    com precisão de <span class="accuracy">99%</span>.
+  </h3>
+</div>
+
+<div class="lembrete">
+  <div class="card">
+    <h3>
+      Reforçamos que
+      <span class="em">o teste não entrega o resultado com total garantia</span
+      >, para ter a certeza de um resultado quanto ao Melanoma, procure ajuda
+      médica.
+    </h3>
+  </div>
+</div>
+
+<a class="clinics" href="/clinicas">Buscar clínicas</a>
+
+<script src="../static/js/result.js"></script>
+
+{% endblock %}
