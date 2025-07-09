@@ -1,129 +1,127 @@
 .main {
-  margin: 40px 300px;
+  margin: 40px 200px;
   padding: 40px;
-  background: var(--minBlack);
   border-radius: 10px;
   border: 3px solid var(--minDownBlack);
   position: relative;
   margin-bottom: 100px;
+}
 
-  .instructions {
-    h2 {
-      padding: 0 10px 10px 10px;
-      text-align: center;
-      font-size: 32px;
-      font-family: "Pridi", sans-serif;
-      font-weight: 500;
-    }
+.instructions {
+  text-align: center;
 
-    p {
-      text-align: center;
-      font-size: 22px;
-      padding-bottom: 20px;
-      border-bottom: 2px dotted var(--minWhite);
-    }
+  h2 {
+    font-size: 44px;
+    font-weight: 400;
+  }
 
-    .instructions-list {
+  p {
+    font-size: 22px;
+    font-weight: 200;
+  }
+
+  .instructions-list {
+    margin: 70px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    .instruction {
       display: flex;
       flex-flow: column wrap;
+      gap: 20px;
+      background: var(--medUpWhite);
+      padding: 20px;
+      border-radius: 15px;
+      border: 3px solid var(--minWhite);
+      box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+      cursor: context-menu;
+      transition: all ease-in-out 0.15s;
 
-      .instruction {
-        display: flex;
-        flex-flow: column wrap;
-        text-align: center;
+      i {
+        color: var(--minBlack);
+        font-size: 22px;
+        transition: all ease-in-out 0.15s;
+      }
 
-        i {
-          justify-content: center;
-          text-align: center;
-          padding-top: 15px;
-          font-size: 18px;
+      h3 {
+        font-weight: 400;
+      }
+
+      &:hover {
+        transform: scale(1.02);
+        background: var(--medWhite);
+
+        i.fa-camera {
           color: var(--maxBlue);
-
-          &.fa-lightbulb {
-            color: var(--minBlue);
-          }
-
-          &.fa-expand {
-            color: var(--medPink);
-          }
         }
 
-        h3 {
-          padding: 20px;
-          font-weight: 200;
-          text-indent: 10px;
+        i.fa-lightbulb {
+          color: var(--medBlue);
         }
 
-        border-bottom: 2px solid var(--minDownBlack);
-
-        &:last-child {
-          border: none;
+        i.fa-expand {
+          color: var(--maxPink);
         }
       }
     }
-
-    margin-bottom: 55px;
   }
+}
 
-  .enviar {
-    width: 100%;
+.enviar {
+  width: 100%;
 
-    .enviar-button {
-      display: flex;
+  .enviar-button {
+    display: flex;
+    margin: 0 auto;
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+    border: 3px dashed var(--minWhite);
+    text-align: center;
+    transition: all ease-in-out 0.2s;
+
+    i {
+      align-content: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 32px;
+      color: var(--darkerWhite);
+      transition: all ease-in-out 0.2s;
+
+      p {
+        font-family: "Raleway", sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 10px 10px 0 10px;
+        transition: all ease-in-out 0.2s;
+      }
+    }
+
+    input {
       margin: 0 auto;
       height: 200px;
       width: 200px;
       cursor: pointer;
-      position: relative;
-      border-radius: 10px;
-      border: 3px dashed var(--minDownLightBlack);
-      text-align: center;
-      transition: all ease-in-out 0.2s;
-
-      i {
-        align-content: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        font-size: 32px;
-        color: var(--minDownLightBlack);
-        transition: all ease-in-out 0.2s;
-
-        p {
-          font-family: "Raleway", sans-serif;
-          font-weight: 500;
-          font-size: 18px;
-          padding: 10px 10px 0 10px;
-          color: var(--minDownLightBlack);
-          transition: all ease-in-out 0.2s;
-        }
-      }
-
-      input {
-        margin: 0 auto;
-        height: 200px;
-        width: 200px;
-        cursor: pointer;
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-      }
-
-      &:hover {
-        border-color: var(--minWhite);
-        background: var(--maxBlack);
-
-        i {
-          color: var(--minWhite);
-
-          p {
-            color: var(--minWhite);
-          }
-        }
-      }
+      position: absolute;
+      inset: 0;
+      opacity: 0;
     }
 
+    &:hover {
+      border-color: var(--minBlack);
+      background: var(--medUpWhite);
+      filter: brightness(95%);
+
+      i {
+        color: var(--minBlack);
+      }
+    }
   }
+
 }
 
 button {
@@ -136,10 +134,10 @@ button {
   color: var(--maxWhite);
   text-decoration: none;
   font-family: "Raleway", sans-serif;
-  padding: 20px;
-  border-radius: 50px;
+  padding: 20px 40px;
+  border-radius: 10px;
   font-weight: 400;
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.3);
   filter: brightness(80%);
   border: none;
   transition: all ease-in-out 0.2s;

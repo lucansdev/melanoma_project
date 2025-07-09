@@ -1,63 +1,67 @@
 .main {
-  margin: 40px 300px;
+  margin: 40px 200px;
   padding: 40px;
-  background: var(--minBlack);
   border-radius: 10px;
   border: 3px solid var(--minDownBlack);
   position: relative;
   margin-bottom: 100px;
 }
-.main .instructions {
-  margin-bottom: 55px;
-}
-.main .instructions h2 {
-  padding: 0 10px 10px 10px;
+
+.instructions {
   text-align: center;
-  font-size: 32px;
-  font-family: "Pridi", sans-serif;
-  font-weight: 500;
 }
-.main .instructions p {
-  text-align: center;
+.instructions h2 {
+  font-size: 44px;
+  font-weight: 400;
+}
+.instructions p {
   font-size: 22px;
-  padding-bottom: 20px;
-  border-bottom: 2px dotted var(--minWhite);
+  font-weight: 200;
 }
-.main .instructions .instructions-list {
+.instructions .instructions-list {
+  margin: 70px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.instructions .instructions-list .instruction {
   display: flex;
   flex-flow: column wrap;
+  gap: 20px;
+  background: var(--medUpWhite);
+  padding: 20px;
+  border-radius: 15px;
+  border: 3px solid var(--minWhite);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+  cursor: context-menu;
+  transition: all ease-in-out 0.15s;
 }
-.main .instructions .instructions-list .instruction {
-  display: flex;
-  flex-flow: column wrap;
-  text-align: center;
-  border-bottom: 2px solid var(--minDownBlack);
+.instructions .instructions-list .instruction i {
+  color: var(--minBlack);
+  font-size: 22px;
+  transition: all ease-in-out 0.15s;
 }
-.main .instructions .instructions-list .instruction i {
-  justify-content: center;
-  text-align: center;
-  padding-top: 15px;
-  font-size: 18px;
+.instructions .instructions-list .instruction h3 {
+  font-weight: 400;
+}
+.instructions .instructions-list .instruction:hover {
+  transform: scale(1.02);
+  background: var(--medWhite);
+}
+.instructions .instructions-list .instruction:hover i.fa-camera {
   color: var(--maxBlue);
 }
-.main .instructions .instructions-list .instruction i.fa-lightbulb {
-  color: var(--minBlue);
+.instructions .instructions-list .instruction:hover i.fa-lightbulb {
+  color: var(--medBlue);
 }
-.main .instructions .instructions-list .instruction i.fa-expand {
-  color: var(--medPink);
+.instructions .instructions-list .instruction:hover i.fa-expand {
+  color: var(--maxPink);
 }
-.main .instructions .instructions-list .instruction h3 {
-  padding: 20px;
-  font-weight: 200;
-  text-indent: 10px;
-}
-.main .instructions .instructions-list .instruction:last-child {
-  border: none;
-}
-.main .enviar {
+
+.enviar {
   width: 100%;
 }
-.main .enviar .enviar-button {
+.enviar .enviar-button {
   display: flex;
   margin: 0 auto;
   height: 200px;
@@ -65,28 +69,27 @@
   cursor: pointer;
   position: relative;
   border-radius: 10px;
-  border: 3px dashed var(--minDownLightBlack);
+  border: 3px dashed var(--minWhite);
   text-align: center;
   transition: all ease-in-out 0.2s;
 }
-.main .enviar .enviar-button i {
+.enviar .enviar-button i {
   align-content: center;
   justify-content: center;
   width: 100%;
   height: 100%;
   font-size: 32px;
-  color: var(--minDownLightBlack);
+  color: var(--darkerWhite);
   transition: all ease-in-out 0.2s;
 }
-.main .enviar .enviar-button i p {
+.enviar .enviar-button i p {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-size: 18px;
   padding: 10px 10px 0 10px;
-  color: var(--minDownLightBlack);
   transition: all ease-in-out 0.2s;
 }
-.main .enviar .enviar-button input {
+.enviar .enviar-button input {
   margin: 0 auto;
   height: 200px;
   width: 200px;
@@ -95,15 +98,13 @@
   inset: 0;
   opacity: 0;
 }
-.main .enviar .enviar-button:hover {
-  border-color: var(--minWhite);
-  background: var(--maxBlack);
+.enviar .enviar-button:hover {
+  border-color: var(--minBlack);
+  background: var(--medUpWhite);
+  filter: brightness(95%);
 }
-.main .enviar .enviar-button:hover i {
-  color: var(--minWhite);
-}
-.main .enviar .enviar-button:hover i p {
-  color: var(--minWhite);
+.enviar .enviar-button:hover i {
+  color: var(--minBlack);
 }
 
 button {
@@ -116,10 +117,10 @@ button {
   color: var(--maxWhite);
   text-decoration: none;
   font-family: "Raleway", sans-serif;
-  padding: 20px;
-  border-radius: 50px;
+  padding: 20px 40px;
+  border-radius: 10px;
   font-weight: 400;
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.3);
   filter: brightness(80%);
   border: none;
   transition: all ease-in-out 0.2s;

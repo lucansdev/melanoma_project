@@ -54,6 +54,8 @@ function handleFile(e) {
   submitButton.style.cursor = "pointer";
   submitButton.style.filter = "brightness(100%)";
 
+  enviarButton.style.borderColor = "var(--minBlack)";
+
   if (file) {
     enviarButton.style.backgroundImage = "none";
     iElement.style.opacity = 0;
