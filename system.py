@@ -115,10 +115,6 @@ def predict_cancer():
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 
-@app.route("/clinicas")
-def clinicas():
-    return render_template("clinicas.html")
-
 @app.route("/resultado")
 def resultado():
     return render_template("resultado.html")
