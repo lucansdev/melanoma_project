@@ -1,5 +1,5 @@
-const resultHTML = document.querySelector("result");
-const accuracyHTML = document.querySelector("accuracy");
+const resultHTML = document.querySelector(".result");
+const accuracyHTML = document.querySelector(".accuracy");
 
 const result = localStorage.getItem("result");
 const accuracy = localStorage.getItem("accuracy");
@@ -10,4 +10,4 @@ if (result >= 0.5) {
   resultHTML.innerHTML = "negativo";
 }
 
-accuracyHTML = accuracy;
+accuracyHTML.innerHTML = `${Number(accuracy).toFixed(2)}`;

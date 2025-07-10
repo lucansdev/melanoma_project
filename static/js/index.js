@@ -33,7 +33,7 @@ async function handleSubmit() {
     });
 
     if (response.ok) {
-      responseObject = JSON.parse(response);
+      const responseObject = await response.json();
       localStorage.setItem("result", responseObject.response);
       localStorage.setItem("accuracy", responseObject.acc);
 
