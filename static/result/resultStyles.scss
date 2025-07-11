@@ -49,29 +49,33 @@
   }
 }
 
-a.clinics {
-  display: flex;
-  margin: 0 auto;
-  width: max-content;
-  margin-top: 50px;
+.detect-direct {
   text-align: center;
-  padding: 10px;
-  background: var(--medBlue);
-  font-size: 24px;
-  color: var(--maxWhite);
-  text-decoration: none;
-  font-family: "Raleway", sans-serif;
-  padding: 20px;
-  border-radius: 10px;
-  font-weight: 400;
-  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
-  transition: all ease-in-out 0.2s;
+  margin: 0 auto;
+  padding-top: 40px;
+  transition: all ease-in-out 0.15s;
+  width: 100%;
 
-  &:hover {
-    background: var(--maxBlue);
-    font-weight: 500;
+  a {
+    background: var(--medBlue);
+    font-size: 24px;
+    width: 100%;
+    color: var(--maxWhite);
+    text-decoration: none;
+    font-family: "Raleway", sans-serif;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 400;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      background: var(--maxBlue);
+      font-weight: 500;
+    }
   }
 }
+
 
 @media (max-width: 1200px) {
   .lembrete {

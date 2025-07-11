@@ -43,16 +43,17 @@
   color: var(--medBlue);
 }
 
-a.clinics {
-  display: flex;
-  margin: 0 auto;
-  width: -moz-max-content;
-  width: max-content;
-  margin-top: 50px;
+.detect-direct {
   text-align: center;
-  padding: 10px;
+  margin: 0 auto;
+  padding-top: 40px;
+  transition: all ease-in-out 0.15s;
+  width: 100%;
+}
+.detect-direct a {
   background: var(--medBlue);
   font-size: 24px;
+  width: 100%;
   color: var(--maxWhite);
   text-decoration: none;
   font-family: "Raleway", sans-serif;
@@ -62,7 +63,7 @@ a.clinics {
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
   transition: all ease-in-out 0.2s;
 }
-a.clinics:hover {
+.detect-direct a:hover {
   background: var(--maxBlue);
   font-weight: 500;
 }
