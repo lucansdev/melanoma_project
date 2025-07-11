@@ -25,7 +25,7 @@
   margin-top: 50px;
 
   .card {
-    margin: 0 200px;
+    margin: 0 150px;
     display: flex;
     flex-flow: column wrap;
     gap: 20px;
@@ -70,5 +70,33 @@ a.clinics {
   &:hover {
     background: var(--maxBlue);
     font-weight: 500;
+  }
+}
+
+@media (max-width: 1200px) {
+  .lembrete {
+    .card {
+      margin: 0 100px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .lembrete {
+    .card {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 80px;
+  }
+}
+
+@media (max-width: 448px) {
+  .main {
+    padding: 40px;
   }
 }
