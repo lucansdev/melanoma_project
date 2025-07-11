@@ -40,27 +40,20 @@ body {
 .header {
   width: 100%;
   background: var(--maxWhite);
-  height: 60px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.2);
 }
-.header a {
-  color: var(--minBlack);
-  text-decoration: none;
-  transition: all ease-in-out 0.1s;
+.header img {
+  width: 90px;
+  height: auto;
+  transition: all ease-in-out 0.15s;
 }
-.header a:hover {
-  color: var(--maxBlack);
-}
-.header h1 {
-  transform: scaleX(1.15);
-  transform-origin: center;
-  font-size: 36px;
-  font-weight: 900;
-  font-style: italic;
+.header img:hover {
+  transform: scale(1.04);
 }
 .header::after {
   content: "";
