@@ -87,3 +87,25 @@
     }
   }
 }
+
+@media (max-width: 992px) {
+  .main {
+    padding: 80px;
+  }
+
+  .aviso {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .main {
+    padding: 80px 40px;
+  }
+
+  .main-text {
+    h1 {
+      font-size: 56px;
+    }
+  }
+}
