@@ -10,6 +10,20 @@
   position: relative;
   padding-bottom: 10px;
   font-weight: 600;
+  cursor: context-menu;
+  transition: all ease-in-out 0.2s;
+}
+.main-text h1 .ai {
+  background: linear-gradient(45deg, var(--maxBlue), var(--medBlue), var(--maxPink) 50%);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  transition: all ease-in-out 0.2s;
+}
+.main-text h1:hover {
+  transform: scale(1.02);
 }
 .main-text p {
   font-size: 24px;
