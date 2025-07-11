@@ -124,3 +124,11 @@ body {
     }
   }
 }
+
+@media (max-width: 360px) {
+  .header {
+    h1 {
+      font-size: 24px;
+    }
+  }
+}
