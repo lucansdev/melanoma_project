@@ -3,4 +3,4 @@ keras
 numpy
 opencv-python
 Flask
-serveless-wsgi
+serverless-wsgi
