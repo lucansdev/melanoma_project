@@ -77,7 +77,8 @@ class JeramyModel(Model):
         return np.asarray(prediction["output_0"]).tolist()
     
 
-model_path = "my_model/0001"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "my_model", "0001")
 melanoma_model = JeramyModel()
 melanoma_model.get_model(model_path)
 
