@@ -58,10 +58,8 @@ class JeramyModel(Model):
         if not os.path.exists(model_path):
              raise FileNotFoundError(f"Model not found at the specified path: {model_path}")
         try:
-            self.model = keras.models.load_model(model_path)
-            lr = tf.keras.optimizers.schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=10000, decay_rate=0.9)
-            adam = tf.keras.optimizers.Adam(learning_rate=lr)
-            self.model.compile(optimizer=adam, loss="binary_crossentropy", metrics=["accuracy"])
+            saved_model = tf.saved_model.load(model_path)
+            self.model = saved_model
             print("--- Model Loaded and Compiled Successfully ---") 
         except Exception as e:
             raise IOError(f"Error loading the model: {e}")
@@ -72,12 +70,14 @@ class JeramyModel(Model):
         
         if self.model is None:
             raise ValueError("Model is not loaded")
+
         
-        prediction = self.model.predict(image_tensor)
-        return prediction.tolist()
+        model_loaded = self.model.signatures["serving_default"]
+        prediction = model_loaded(image_tensor)
+        return np.asarray(prediction["output_0"]).tolist()
     
 
-model_path = "/home/lucas/Área de Trabalho/project_ai/cancer_project/model/cancer_model.h5"
+model_path = "my_model/0001"
 melanoma_model = JeramyModel()
 melanoma_model.get_model(model_path)
 
@@ -118,6 +118,3 @@ def predict_cancer():
 @app.route("/resultado")
 def resultado():
     return render_template("resultado.html")
-
-if __name__ == "__main__":
-    app.run(debug=True, use_reloader=False,host="0.0.0.0")
