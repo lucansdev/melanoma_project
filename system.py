@@ -107,3 +107,6 @@ def predict_cancer():
 @app.route("/resultado")
 def resultado():
     return render_template("resultado.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
