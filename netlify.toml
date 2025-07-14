@@ -1,6 +1,6 @@
 [build]
   publish = "static"
-  functions = "netlify/functions"
+  functions = "netlify/functions"  # Esta é a linha mais importante!
 
 [[redirects]]
   from = "/*"
