@@ -1,0 +1,15 @@
+# Define que usaremos o ambiente padrão do Python
+runtime: python39 # Informa que queremos Python 3.9
+
+# Define o tipo de máquina. F1 é a mais básica e se encaixa na camada gratuita.
+instance_class: F1
+
+# O comando que o Google usará para iniciar seu servidor.
+# :$PORT é uma variável que o próprio App Engine fornecerá.
+entrypoint: gunicorn -b :$PORT system:app
+
+# Configuração para que o App Engine possa escalar para zero instâncias
+# quando não houver tráfego, economizando muito os seus créditos.
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
