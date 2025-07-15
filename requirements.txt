@@ -5,4 +5,3 @@ opencv-python
 Flask
 gunicorn
 tflite-runtime
-serverless-wsgi
