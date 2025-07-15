@@ -5,12 +5,13 @@ import tensorflow as tf
 import keras
 import numpy as np
 import os
+import tflite_runtime.interpreter as tflite
 
 app = Flask(__name__)
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(BASE_DIR, "my_model", "0001")
+model_path = os.path.join(BASE_DIR,"tflite_model.tflite")
 
 class Image(ABC):
     def __init__(self, directory_image):
@@ -46,23 +47,33 @@ class Model(ABC):
 class JeramyModel(Model):
     def __init__(self):
         super().__init__()
+
     def get_model(self, model_path) -> None:
         if not os.path.exists(model_path):
              raise FileNotFoundError(f"Model not found at the specified path: {model_path}")
         try:
-            saved_model = tf.saved_model.load(model_path)
-            self.model = saved_model
+            self.model = tflite.Interpreter(model_path=model_path)
+            self.model.allocate_tensors()
             print("--- Model Loaded and Compiled Successfully ---") 
         except Exception as e:
             raise IOError(f"Error loading the model: {e}")
+        
     def predict(self, image_tensor):
         if not isinstance(image_tensor, tf.Tensor):
             raise TypeError("Image is not a tensor")
+        
         if self.model is None:
             raise ValueError("Model is not loaded")
-        model_loaded = self.model.signatures["serving_default"]
-        prediction = model_loaded(image_tensor)
-        return np.asarray(prediction["output_0"]).tolist()
+        
+        input_details = self.model.get_input_details()
+        output_details = self.model.get_output_details()
+
+        self.model.set_tensor(input_details[0]["index"],image_tensor)
+        self.model.invoke()
+
+        prediction = self.model.get_tensor(output_details[0]["index"])
+
+        return prediction.tolist()
 
 melanoma_model = JeramyModel()
 

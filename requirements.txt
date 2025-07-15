@@ -4,3 +4,4 @@ numpy
 opencv-python
 Flask
 gunicorn
+tflite-runtime
