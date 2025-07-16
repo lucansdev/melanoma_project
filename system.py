@@ -1,51 +1,45 @@
 from abc import ABC, abstractmethod
-from flask import Flask, jsonify, render_template, request,Response
+from flask import Flask, jsonify, render_template, request, Response
 import cv2
 import tensorflow as tf
 import keras
 import numpy as np
 import os
+import tflite_runtime.interpreter as tflite
 
 app = Flask(__name__)
 
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR,"tflite_model.tflite")
+
 class Image(ABC):
     def __init__(self, directory_image):
         self.directory_image = directory_image
-
     @abstractmethod
     def get_image(self):
-        """
-        This method should be implemented by subclasses to return an image tensor.
-        """
         pass
 
 class LoadImage(Image):
     def __init__(self, directory_image) -> None:
         super().__init__(directory_image)
-
     def get_image(self) -> tf.Tensor:
         image_stream = self.directory_image.read()
         image_array = np.frombuffer(image_stream, np.uint8)
         image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
-        
         if image is None:
             raise FileNotFoundError("Image could not be decoded. Please check the file format.")
-        
         image_tensor = tf.convert_to_tensor(image, dtype=tf.float32) / 255.0
         image_tensor = tf.image.resize(image_tensor, (224, 224))
         image_tensor = tf.expand_dims(image_tensor, axis=0)
-
         return image_tensor
 
 class Model(ABC):
     def __init__(self):
         self.model = None
-
     @abstractmethod
     def get_model(self, model_path) -> None:
         pass
-
     @abstractmethod
     def predict(self, image_tensor):
         pass
@@ -58,14 +52,12 @@ class JeramyModel(Model):
         if not os.path.exists(model_path):
              raise FileNotFoundError(f"Model not found at the specified path: {model_path}")
         try:
-            self.model = keras.models.load_model(model_path)
-            lr = tf.keras.optimizers.schedules.ExponentialDecay(initial_learning_rate=1e-3, decay_steps=10000, decay_rate=0.9)
-            adam = tf.keras.optimizers.Adam(learning_rate=lr)
-            self.model.compile(optimizer=adam, loss="binary_crossentropy", metrics=["accuracy"])
+            self.model = tflite.Interpreter(model_path=model_path)
+            self.model.allocate_tensors()
             print("--- Model Loaded and Compiled Successfully ---") 
         except Exception as e:
             raise IOError(f"Error loading the model: {e}")
-
+        
     def predict(self, image_tensor):
         if not isinstance(image_tensor, tf.Tensor):
             raise TypeError("Image is not a tensor")
@@ -73,13 +65,18 @@ class JeramyModel(Model):
         if self.model is None:
             raise ValueError("Model is not loaded")
         
-        prediction = self.model.predict(image_tensor)
-        return prediction.tolist()
-    
+        input_details = self.model.get_input_details()
+        output_details = self.model.get_output_details()
 
-model_path = "/home/lucas/Área de Trabalho/project_ai/cancer_project/model/cancer_model.h5"
+        self.model.set_tensor(input_details[0]["index"],image_tensor)
+        self.model.invoke()
+
+        prediction = self.model.get_tensor(output_details[0]["index"])
+
+        return prediction.tolist()
+
 melanoma_model = JeramyModel()
-melanoma_model.get_model(model_path)
+
 
 
 @app.route("/")
@@ -91,7 +88,6 @@ def predict_cancer():
     if request.method == "GET":
         return render_template("test.html")
     
-
     if request.method == "POST":
         if 'file' not in request.files:
             return jsonify({"error": "No file part in the request"}), 400
@@ -102,6 +98,10 @@ def predict_cancer():
             return jsonify({"error": "No selected file"}), 400
 
         try:
+            if melanoma_model.model is None:
+                print("--- Model not loaded. Loading now... ---")
+                melanoma_model.get_model(model_path)
+
             image_loader = LoadImage(file)
             image_tensor = image_loader.get_image()
             prediction = melanoma_model.predict(image_tensor)
@@ -109,9 +109,9 @@ def predict_cancer():
             if prediction[0][0] >= 0.5:
                 acc = prediction[0][0] * 100
             else:
-                acc = (1- prediction[0][0]) * 100
+                acc = (1 - prediction[0][0]) * 100
 
-            return jsonify({"response": prediction,"acc":acc})
+            return jsonify({"response": prediction, "acc": acc})
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 
@@ -120,4 +120,4 @@ def resultado():
     return render_template("resultado.html")
 
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader=False,host="0.0.0.0")
+    app.run(debug=True)
