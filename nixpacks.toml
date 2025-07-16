@@ -1,9 +1,0 @@
-# nixpacks.toml
-
-[phases.setup]
-# Lista de pacotes de sistema (Debian/Ubuntu) para instalar
-aptPkgs = ["libgl1-mesa-glx", "libglib2.0-0"]
-
-[start]
-# O comando para iniciar sua aplicação
-cmd = "gunicorn system:app"
